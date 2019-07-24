@@ -1,7 +1,3 @@
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
 #include "ft_header.h"
 
 char     *ft_put_in_tab(int size, char *text) 
@@ -11,7 +7,7 @@ char     *ft_put_in_tab(int size, char *text)
 	int		ret;
 	int		i;
 
-	if (!(buf = malloc(sizeof(char)* size + 1)))	
+	if (!(buf = malloc(sizeof(char) * size + 1)))	
 		return (0);
 	fd = open(text, O_RDONLY);
 	if (fd == -1)
@@ -22,7 +18,6 @@ char     *ft_put_in_tab(int size, char *text)
 	ret = read(fd, buf, size);
 		buf[ret] = '\0';
 	i = 0;
-	printf("%s\n", buf);
 	close(fd);
 	return (buf);
 }

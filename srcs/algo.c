@@ -1,12 +1,6 @@
-
-
-
 #include "ft_header.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-
-int		ft_min(int str_g, int str_h, int str_hg)
+int	ft_min(int str_g, int str_h, int str_hg)
 {
 	if (str_g < str_h && str_g < str_hg)
 		return (str_g);
@@ -17,7 +11,7 @@ int		ft_min(int str_g, int str_h, int str_hg)
 	return (0); 
 }
 
-void		tab_int_verif(int *tab)
+void	tab_int_verif(int *tab)
 {
 	int i;
 
@@ -49,7 +43,7 @@ void	find_square(char **tab)
 		while (tab[i][j])
 		{
 			
-			printf(" %c", tab[i][j]);
+		//	printf(" %c", tab[i][j]);
 			if (i == 0 && tab[i][j])
 			{
 				if (tab[i][j] == 'o')

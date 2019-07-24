@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
 #include "ft_header.h"
 
 #define BUF_SIZE 4096
@@ -29,7 +25,7 @@ int     ft_buf_text(char *text)
 	if (fd == -1)
 	{
 		write(2, "open error\n", 11);
-		return (1);
+		exit(0);
 	}
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
