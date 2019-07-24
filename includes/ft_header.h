@@ -15,6 +15,14 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <stdio.h>
+
+typedef struct	s_env
+{
+	int	nb_lines;
+	char	*charset;
+}		t_env;
 
 void		ft_putstr(char *str);
 void		ft_putchar(char c);
@@ -27,5 +35,6 @@ int    		ft_buf_text(char *text);
 char   		*ft_put_in_tab(int size, char *text);
 void		find_square(char **tab);
 char 		**ft_split(char *str, char *charset);
+int		**create_tabint(char **tab, int size);
 
 #endif
