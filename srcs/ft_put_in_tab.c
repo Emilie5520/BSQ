@@ -5,7 +5,6 @@ char	*ft_put_in_tab(int size, char *text)
 	int		fd;
 	char	*buf;
 	int		ret;
-	int		i;
 
 	if (!(buf = malloc(sizeof(char) * size + 1)))
 		return (0);
@@ -14,7 +13,6 @@ char	*ft_put_in_tab(int size, char *text)
 		map_error();
 	ret = read(fd, buf, size);
 	buf[ret] = '\0';
-	i = 0;
 	close(fd);
 	return (buf);
 }

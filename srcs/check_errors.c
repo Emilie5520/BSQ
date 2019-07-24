@@ -38,8 +38,6 @@ void	check_lines(char **tab_number, int size, int i, t_env *e)
 	i = 0;
 	while (tab_number[i])
 	{
-		ft_putstr(tab_number[i]);
-		ft_putchar('\n');
 		check_tab(tab_number[i], e);
 		if (ft_strlen(tab_number[i]) != size)
 			map_error();
