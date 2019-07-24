@@ -33,7 +33,7 @@ void		ft_display_file(char *file);
 int			main(int argc, char **argv);
 int    		ft_buf_text(char *text);
 char   		*ft_put_in_tab(int size, char *text);
-void		find_square(char **tab, int size_i, int size_j);
+void		find_square(char **tab);
 char 		**ft_split(char *str, char *charset);
 int			**create_tabint(char **tab);
 int			ft_tablen(char **tab);
