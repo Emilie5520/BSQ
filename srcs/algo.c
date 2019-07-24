@@ -40,29 +40,24 @@ int	ft_min(int str_g, int str_h, int str_hg)
 	return (min); 
 }
 
-void	find_square(char **tab)
+int		**find_square(char **tab)
 {
 	int		i;
 	int		j;
 	int 	**tab_int;
-	int		BSQ;	
+	
 	tab_int = create_tabint(tab);
 	i = 1;
-	BSQ = 0;
-//	tab_int_verif(tab_int);
 	while (i < ft_tablen(tab))
 	{
 		j = 1;
 		while (j < ft_strlen(tab[i]))
 		{
 			tab_int[i][j] = tab_int[i][j] * (ft_min(tab_int[i -1][j], tab_int[i - 1][j - 1], tab_int[i][j - 1]) + 1);
-			if (BSQ < tab_int[i][j])
-				BSQ = tab_int[i][j];
 			j++;
 		}
 		i++;
 	}
-	printf("\n");
 	i = 0;
 	j = 0;
 	while (i < ft_tablen(tab))
@@ -76,5 +71,6 @@ void	find_square(char **tab)
 		printf("%c", '\n');
 		i++;
 	}
+	return (tab_int);
 }
 

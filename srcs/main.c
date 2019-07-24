@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 10:56:03 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 15:15:56 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 16:54:19 by edouvier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ int		main(int argc, char **argv)
 		printf("%c", '\n');
 		i++;
 	}
-	find_square(tab_number);
-//	printf("%s\n", tab_number);
+	tabint = find_square(tab_number);
+	ft_put_in_char(tabint, tab_number);
 }
