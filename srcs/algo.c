@@ -13,7 +13,7 @@ int		**create_tabint(char **tab)
 		tabint = (int**)malloc(sizeof(int*) * size);
 		while (i < size)
 		{
-			tabint[i] = (int*)malloc(sizeof(int) * ft_strlen(tab[i]));
+			tabint[i] = (int*)malloc(sizeof(int) * )ft_strlen(tab[i]);
 			j = 0;
 			while (tab[i][j])
 			{
@@ -30,23 +30,30 @@ int		**create_tabint(char **tab)
 
 int	ft_min(int str_g, int str_h, int str_hg)
 {
-	if (str_g < str_h && str_g < str_hg)
-		return (str_g);
-	else if (str_h < str_g && str_h < str_hg)
-		return (str_h);
-	else if (str_hg < str_g && str_hg < str_h)
-		return (str_hg);
-	return (0); 
+	int min;
+
+	min = str_g;
+	if (min > str_h)
+		min = str_h;
+	if (min > str_hg)
+		min = str_hg;
+	return (min); 
 }
 
-void	tab_int_verif(int *tab)
+void	tab_int_verif(int **tab)
 {
 	int i;
+	int j;
 
 	i = 0;
-	while (i < 10)
+	j = 0;
+	while (i < ft_tablen(tab))
 	{
-		printf(" %d", tab[i]);
+		while (j < ft_strlen(tab[i]))
+		{
+			printf(" %d", tab[i][j]);
+			j++;
+		}
 		i++;
 	}
 
@@ -56,49 +63,24 @@ void	find_square(char **tab)
 {
 	int		i;
 	int		j;
-	int 	*tab_int;
-	int a;
-	int resultat;
-
-	resultat = 0;
-	i = 0;
-	while (tab[i])
+	int 	**tab_int;
+	int		BSQ;	
+	tab_int = create_tabint(tab);
+	i = 1;
+	BSQ = 0;
+//	tab_int_verif(tab_int);
+	while (i < ft_tablen(tab))
 	{
-		j = 0;
-		tab_int = malloc(sizeof(int) * ft_strlen(&tab[i][j]));
-		if (tab_int == NULL)
-			return ;
-		while (tab[i][j])
+		j = 1;
+		while (j < ft_strlen(tab[i]))
 		{
-			
-		//	printf(" %c", tab[i][j]);
-			if (i == 0 && tab[i][j])
-			{
-				if (tab[i][j] == 'o')
-					tab_int[j] = 0;
-				else
-					tab_int[j] = 1;
-			}
-			else if (tab[i][j] == 'o')
-				resultat = 0;
-			else if (j == 0 && tab[i][j])
-			{
-				resultat = 1;
-				tab_int[j] = 1;
-			}	
-			else if (a != 0 && tab_int[j] != 0 && tab_int[j - 1] != 0)
-				resultat = ft_min(a, tab_int[j], tab_int[j - 1]) + 1;
-			else
-				resultat = 1;
-			
-			//		tab_int_verif(tab_int);
-			tab_int[i - 1] = a;		
-			a = resultat;
+			tab_int[i][j] = tab_int[i][j] * (ft_min(tab_int[i -1][j], tab_int[i - 1][j - 1], tab_int[i][j - 1]) + 1);
+			if (BSQ < tab_int[i][j])
+				BSQ = tab_int[i][j];
 			j++;
 		}
-	//	tab_int_verif(tab_int);
-		printf("\n");
 		i++;
-	}	
+	}
+	printf("\n");
 }
 

@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 11:56:48 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 11:30:39 by thabdoul         ###   ########.fr       */
+/*   Updated: 2019/07/24 15:03:32 by edouvier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		ft_display_file(char *file);
 int			main(int argc, char **argv);
 int    		ft_buf_text(char *text);
 char   		*ft_put_in_tab(int size, char *text);
-void		find_square(char **tab);
+void		find_square(char **tab, int size_i, int size_j);
 char 		**ft_split(char *str, char *charset);
 int			**create_tabint(char **tab);
 int			ft_tablen(char **tab);
