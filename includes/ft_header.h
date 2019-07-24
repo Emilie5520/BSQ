@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 21:43:51 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 21:43:56 by edouvier         ###   ########.fr       */
+/*   Created: 2019/07/23 11:56:48 by edouvier          #+#    #+#             */
+/*   Updated: 2019/07/24 22:04:48 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void			map_error();
 char			**ft_put_in_char(int **tab_int, char **tab_char, t_env *e);
 void			map_error();
 void			check_tab(char *str, t_env *e);
-void			check_lines(char **tab_number, int size, int i, t_env *e);
+void			check_lines(char **tab_number, int *size, int i, t_env *e);
 char			*ft_strjoin(char *s1, char *s2);
 
 #endif
