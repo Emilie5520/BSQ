@@ -6,7 +6,7 @@
 #    By: edouvier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/22 15:46:40 by edouvier          #+#    #+#              #
-#    Updated: 2019/07/24 16:47:27 by edouvier         ###   ########.fr        #
+#    Updated: 2019/07/24 19:55:36 by thabdoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRCS = srcs/ft_putchar.c	\
 	   srcs/main.c			\
 	   srcs/ft_split.c		\
 	   srcs/ft_put_in_char.c\
+	   srcs/check_errors.c	\
+	   srcs/ft_strjoin.c 	\
 
 OBJ = $(SRCS:.c=.o)
 
