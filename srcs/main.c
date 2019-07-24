@@ -42,21 +42,14 @@ void	define_chars(t_env *e)
 	e->char_result = e->tab[i + 2];
 }
 
-void	check_args(int argc, t_env *e, char **argv)
+void	check_args(int argc, t_env *e, char *argv)
 {
-	int 	i;
-
-	i = 1;
 	if (argc < 2)
 		e->tab = read_stdin();
 	else
 	{
-		while (i < argc - 1)
-		{
-			e->size = ft_buf_text(argv[i]);
-			e->tab = ft_put_in_tab(e->size, argv[i]);
-			i++;
-		}
+		e->size = ft_buf_text(argv);
+		e->tab = ft_put_in_tab(e->size, argv);
 	}
 	if (!e->tab)
 		map_error();
@@ -66,23 +59,27 @@ int		main(int argc, char **argv)
 {
 	t_env	e;
 	int		i;
-	int		j;
+	int 	args;
 
+	args = 0;
 	i = 0;
-	j = 0;
-	check_args(argc, &e, argv);
-	e.nb_lines = ft_atoi(e.tab);
-	define_chars(&e);
-	if (e.nb_lines == 0)
-		map_error();
-	while (e.tab[i] != '\n')
+	while (args < argc - 1 || (argc == 1 && args == 0))
+	{
+		check_args(argc, &e, argv[args + 1]);
+		e.nb_lines = ft_atoi(e.tab);
+		define_chars(&e);
+		if (e.nb_lines == 0)
+			map_error();
+		while (e.tab[i] != '\n')
+			i++;
 		i++;
-	i++;
-	e.tab_number = ft_split(e.tab + i, "\n");
-	i = 0;
-	check_lines(e.tab_number, &e.size, i, &e);
-	e.tabint = create_tabint(e.tab_number, e);
-	e.tabint = find_square(e.tab_number, e);
-	ft_put_in_char(e.tabint, e.tab_number, &e);
+		e.tab_number = ft_split(e.tab + i, "\n");
+		i = 0;
+		check_lines(e.tab_number, &e.size, i, &e);
+		e.tabint = create_tabint(e.tab_number, e);
+		e.tabint = find_square(e.tab_number, e);
+		ft_put_in_char(e.tabint, e.tab_number, &e);
+		args++;
+	}
 	return (0);
 }

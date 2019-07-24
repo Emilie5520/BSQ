@@ -23,6 +23,7 @@ void	display_tab(char **tab)
 		ft_putchar('\n');
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 void	ft_tab_char(int x, int y, int max, t_env *e)
