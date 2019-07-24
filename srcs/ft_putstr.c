@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/22 16:47:03 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/22 17:08:47 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 20:47:50 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void		ft_putstr(char *str)
 	int		i;
 
 	i = 0;
-	while (str[i])
+	if (str)
 	{
-		ft_putchar(str[i]);
-		i++;
+		while (str[i])
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
 	}
 }

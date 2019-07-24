@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 16:18:30 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 17:01:15 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 20:40:54 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,18 @@ void	display_tab(char **tab)
 	}
 }
 
-void	ft_tab_char(char **tab_char, int x,int y, int max)
+void	ft_tab_char(int x, int y, int max, t_env *e)
 {
-	int		i;
-	int 	j;
+	int	i;
+	int	j;
 
 	i = y;
 	j = x;
-
 	while (i > y - max)
 	{
 		while (j > x - max)
-		{	
-			tab_char[i][j] = 'x';
+		{
+			e->tab_number[i][j] = e->char_result;
 			j--;
 		}
 		j = x;
@@ -45,9 +44,7 @@ void	ft_tab_char(char **tab_char, int x,int y, int max)
 	}
 }
 
-
-
-char 		**ft_put_in_char(int **tab_int, char **tab_char)
+char	**ft_put_in_char(int **tab_int, char **tab_char, t_env *e)
 {
 	int		max;
 	int		i;
@@ -60,7 +57,7 @@ char 		**ft_put_in_char(int **tab_int, char **tab_char)
 	while (i < ft_tablen(tab_char))
 	{
 		j = 0;
-		while (j < ft_strlen(tab_char[i]))
+		while (j++ < ft_strlen(tab_char[i]))
 		{
 			if (max < tab_int[i][j])
 			{
@@ -68,12 +65,10 @@ char 		**ft_put_in_char(int **tab_int, char **tab_char)
 				x = j;
 				y = i;
 			}
-			j++;	
-		}	
+		}
 		i++;
 	}
-	ft_tab_char(tab_char, x, y, max);
-	i = 0;
+	ft_tab_char(x, y, max, e);
 	display_tab(tab_char);
 	return (tab_char);
 }

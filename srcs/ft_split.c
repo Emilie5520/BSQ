@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 14:04:58 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/23 16:42:24 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 20:50:04 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ int		count_words(char *str, char *charset)
 	while (str[i])
 	{
 		if (is_charset(charset, str[i]) == 0 &&
-				(is_charset(charset, str[i + 1]) == 1
-				 || str[i + 1] == '\0'))
+				(is_charset(charset, str[i + 1]) == 1 || str[i + 1] == '\0'))
 		{
 			count += 1;
 		}

@@ -6,97 +6,76 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 10:56:03 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 16:54:19 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 20:45:38 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_header.h"
 
-void	map_error()
+char	*read_stdin(void)
 {
-	ft_putstr("map error");
-	ft_putchar('\n');
-	exit(0);
+	char	buff[4098];
+	size_t	ret;
+	char	*input;
+
+	while ((ret = read(STDIN_FILENO, buff, 4096)) > 0)
+	{
+		if (ret)
+		{
+			buff[ret - 1] = '\n';
+			buff[ret] = '\0';
+			input = ft_strjoin(input, buff);
+		}
+	}
+	return (input);
 }
 
-int		ft_tablen(char **tab)
+void	define_chars(t_env *e)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
+	while (e->tab[i] && (e->tab[i] >= '0' && e->tab[i] <= '9'))
 		i++;
-	return (i);
+	e->char_empty = e->tab[i];
+	e->char_block = e->tab[i + 1];
+	e->char_result = e->tab[i + 2];
 }
 
-void	check_tab(char *str)
+void	check_args(int argc, t_env *e, char *argv)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	if (argc < 2)
+		e->tab = read_stdin();
+	else
 	{
-		if (str[i] != '\n' && str[i] != 'o' && str[i] != 'x' && str[i] != '.')
-			map_error();
-		i++;
+		e->size = ft_buf_text(argv);
+		e->tab = ft_put_in_tab(e->size, argv);
 	}
-}
-
-void	check_lines(char **tab_number, int size, int i, int nb_lines)
-{
-	if(tab_number[0])
-		size = ft_strlen(tab_number[0]);
-	i = 0;
-	while (tab_number[i])
-	{
-		ft_putstr(tab_number[i]);
-		ft_putchar('\n');
-		check_tab(tab_number[i]);
-		if (ft_strlen(tab_number[i]) != size)
-			map_error();
-		i++;
-	}
-	if (i != nb_lines)
+	if (!e->tab)
 		map_error();
 }
 
 int		main(int argc, char **argv)
 {
-	int		size;
-	char 		*tab;
-	char		**tab_number;
+	t_env	e;
 	int		i;
-	int		nb_lines;
-	int		**tabint;
-	int		j = 0;
+	int		j;
 
 	i = 0;
-	if (argc != 2)
-		return (0);
-	size = ft_buf_text(argv[1]);
-	tab = ft_put_in_tab(size, argv[1]);
-	nb_lines = ft_atoi(tab);
-	if (nb_lines == 0)
+	j = 0;
+	check_args(argc, &e, argv[1]);
+	e.nb_lines = ft_atoi(e.tab);
+	define_chars(&e);
+	if (e.nb_lines == 0)
 		map_error();
-	while (tab[i] !=  '\n')
+	while (e.tab[i] != '\n')
 		i++;
 	i++;
-	tab_number = ft_split(tab + i, "\n");
+	e.tab_number = ft_split(e.tab + i, "\n");
 	i = 0;
-	check_lines(tab_number, size, i, nb_lines);
-	printf("Taille du tableau %d\n", ft_tablen(tab_number));
-	tabint = create_tabint(tab_number);
-	while (i < ft_tablen(tab_number))
-	{
-		j = 0;
-		while (j < ft_strlen(tab_number[i]))
-		{
-			printf("%d ", tabint[i][j]);
-			j++;
-		}
-		printf("%c", '\n');
-		i++;
-	}
-	tabint = find_square(tab_number);
-	ft_put_in_char(tabint, tab_number);
+	check_lines(e.tab_number, e.size, i, &e);
+	e.tabint = create_tabint(e.tab_number, e);
+	e.tabint = find_square(e.tab_number, e);
+	ft_put_in_char(e.tabint, e.tab_number, &e);
+	return (0);
 }
