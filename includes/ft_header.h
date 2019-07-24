@@ -37,5 +37,6 @@ void		find_square(char **tab);
 char 		**ft_split(char *str, char *charset);
 int			**create_tabint(char **tab);
 int			ft_tablen(char **tab);
+void		map_error();
 
 #endif
