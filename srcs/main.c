@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/23 10:56:03 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 22:04:21 by thabdoul         ###   ########.fr       */
+/*   Created: 2019/07/24 22:15:53 by edouvier          #+#    #+#             */
+/*   Updated: 2019/07/24 22:23:21 by edouvier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,21 @@ void	define_chars(t_env *e)
 	e->char_result = e->tab[i + 2];
 }
 
-void	check_args(int argc, t_env *e, char *argv)
+void	check_args(int argc, t_env *e, char **argv)
 {
+	int 	i;
+
+	i = 1;
 	if (argc < 2)
 		e->tab = read_stdin();
 	else
 	{
-		e->size = ft_buf_text(argv);
-		e->tab = ft_put_in_tab(e->size, argv);
+		while (i < argc - 1)
+		{
+			e->size = ft_buf_text(argv[i]);
+			e->tab = ft_put_in_tab(e->size, argv[i]);
+			i++;
+		}
 	}
 	if (!e->tab)
 		map_error();
@@ -63,7 +70,7 @@ int		main(int argc, char **argv)
 
 	i = 0;
 	j = 0;
-	check_args(argc, &e, argv[1]);
+	check_args(argc, &e, argv);
 	e.nb_lines = ft_atoi(e.tab);
 	define_chars(&e);
 	if (e.nb_lines == 0)
