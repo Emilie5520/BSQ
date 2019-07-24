@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 11:56:48 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/23 16:27:28 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 11:30:39 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int    		ft_buf_text(char *text);
 char   		*ft_put_in_tab(int size, char *text);
 void		find_square(char **tab);
 char 		**ft_split(char *str, char *charset);
-int		**create_tabint(char **tab, int size);
+int			**create_tabint(char **tab);
+int			ft_tablen(char **tab);
 
 #endif
