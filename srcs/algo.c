@@ -13,7 +13,7 @@ int		**create_tabint(char **tab)
 		tabint = (int**)malloc(sizeof(int*) * size);
 		while (i < size)
 		{
-			tabint[i] = (int*)malloc(sizeof(int) * )ft_strlen(tab[i]);
+			tabint[i] = (int*)malloc(sizeof(int) * ft_strlen(tab[i]));
 			j = 0;
 			while (tab[i][j])
 			{
@@ -40,25 +40,6 @@ int	ft_min(int str_g, int str_h, int str_hg)
 	return (min); 
 }
 
-void	tab_int_verif(int **tab)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (i < ft_tablen(tab))
-	{
-		while (j < ft_strlen(tab[i]))
-		{
-			printf(" %d", tab[i][j]);
-			j++;
-		}
-		i++;
-	}
-
-}
-
 void	find_square(char **tab)
 {
 	int		i;
@@ -82,5 +63,18 @@ void	find_square(char **tab)
 		i++;
 	}
 	printf("\n");
+	i = 0;
+	j = 0;
+	while (i < ft_tablen(tab))
+	{
+		j = 0;
+		while (j < ft_strlen(tab[i]))
+		{
+			printf("%d ", tab_int[i][j]);
+			j++;
+		}
+		printf("%c", '\n');
+		i++;
+	}
 }
 
