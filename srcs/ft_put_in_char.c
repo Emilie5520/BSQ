@@ -12,36 +12,37 @@
 
 #include "ft_header.h"
 
-char 		**ft_tab_char(char **tab_char, int x,int y, int max)
+void	display_tab(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
+void	ft_tab_char(char **tab_char, int x,int y, int max)
 {
 	int		i;
 	int 	j;
 
-	i = 0;
-	j = 0;
-	while (tab_char[i])
+	i = y;
+	j = x;
+
+	while (i > y - max)
 	{
-		while (tab_char[i][j])
-		{
-			if (i == y && j == x)
-			{
-				i = max;
-				while (i > 0)
-				{
-					j = max;
-					while (j > 0)
-					{	
-						tab_char[i][j] = 'x';
-						j--;
-					}
-					i--;
-				}
-			}
-			j++;
+		while (j > x - max)
+		{	
+			tab_char[i][j] = 'x';
+			j--;
 		}
-		i++;
+		j = x;
+		i--;
 	}
-	return (tab_char);
 }
 
 
@@ -56,10 +57,10 @@ char 		**ft_put_in_char(int **tab_int, char **tab_char)
 
 	i = 0;
 	max = 0;
-	while (tab_int[i])
+	while (i < ft_tablen(tab_char))
 	{
 		j = 0;
-		while (tab_int[i][j])
+		while (j < ft_strlen(tab_char[i]))
 		{
 			if (max < tab_int[i][j])
 			{
@@ -73,16 +74,6 @@ char 		**ft_put_in_char(int **tab_int, char **tab_char)
 	}
 	ft_tab_char(tab_char, x, y, max);
 	i = 0;
-//	while (i < ft_tablen(tab_char))
-//	{
-//		j = 0;
-//		while (j < ft_strlen(tab_char[i]))
-//		{
-//			printf("%d", tab_char[i][j]);
-//			j++;
-//		}
-//		printf("%c", '\n');
-//		i++;
-//	}
+	display_tab(tab_char);
 	return (tab_char);
 }
