@@ -6,7 +6,7 @@
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 10:56:03 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/23 16:47:49 by edouvier         ###   ########.fr       */
+/*   Updated: 2019/07/24 11:39:59 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	map_error()
 	exit(0);
 }
 
-int	ft_tablen(char **tab)
+int		ft_tablen(char **tab)
 {
 	int	i;
 
@@ -28,6 +28,7 @@ int	ft_tablen(char **tab)
 		i++;
 	return (i);
 }
+
 void	check_tab(char *str)
 {
 	int	i;
@@ -66,6 +67,8 @@ int		main(int argc, char **argv)
 	char		**tab_number;
 	int		i;
 	int		nb_lines;
+	int		**tabint;
+	int		j = 0;
 
 	i = 0;
 	if (argc != 2)
@@ -81,6 +84,19 @@ int		main(int argc, char **argv)
 	tab_number = ft_split(tab + i, "\n");
 	i = 0;
 	check_lines(tab_number, size, i, nb_lines);
+	printf("Taille du tableau %d\n", ft_tablen(tab_number));
+	tabint = create_tabint(tab_number);
+	while (i < ft_tablen(tab_number))
+	{
+		j = 0;
+		while (j < ft_strlen(tab_number[i]))
+		{
+			printf("%d ", tabint[i][j]);
+			j++;
+		}
+		printf("%c", '\n');
+		i++;
+	}
 	find_square(tab_number);
 //	printf("%s\n", tab_number);
 }
