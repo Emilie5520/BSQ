@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 21:49:32 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 21:49:36 by edouvier         ###   ########.fr       */
+/*   Created: 2019/07/23 10:56:03 by edouvier          #+#    #+#             */
+/*   Updated: 2019/07/24 22:04:21 by thabdoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		main(int argc, char **argv)
 	i++;
 	e.tab_number = ft_split(e.tab + i, "\n");
 	i = 0;
-	check_lines(e.tab_number, e.size, i, &e);
+	check_lines(e.tab_number, &e.size, i, &e);
 	e.tabint = create_tabint(e.tab_number, e);
 	e.tabint = find_square(e.tab_number, e);
 	ft_put_in_char(e.tabint, e.tab_number, &e);

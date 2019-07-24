@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: edouvier <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 21:45:16 by edouvier          #+#    #+#             */
-/*   Updated: 2019/07/24 21:45:21 by edouvier         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_header.h"
 
 int		**create_tabint(char **tab, t_env e)
@@ -60,6 +48,8 @@ int		**find_square(char **tab, t_env e)
 
 	tab_int = create_tabint(tab, e);
 	i = 1;
+	if (e.size == 1 && tab[0][0] == e.char_empty)
+		tab[0][0] = e.char_result;
 	while (i < ft_tablen(tab))
 	{
 		j = 1;
