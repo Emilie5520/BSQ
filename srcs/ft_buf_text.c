@@ -23,10 +23,7 @@ int     ft_buf_text(char *text)
 	
 	fd = open(text, O_RDONLY);
 	if (fd == -1)
-	{
-		write(2, "open error\n", 11);
-		exit(0);
-	}
+		map_error();
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';

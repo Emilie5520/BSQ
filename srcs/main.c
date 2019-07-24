@@ -75,7 +75,7 @@ int		main(int argc, char **argv)
 		return (0);
 	size = ft_buf_text(argv[1]);
 	tab = ft_put_in_tab(size, argv[1]);
-	nb_lines = atoi(tab);
+	nb_lines = ft_atoi(tab);
 	if (nb_lines == 0)
 		map_error();
 	while (tab[i] !=  '\n')

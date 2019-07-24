@@ -11,10 +11,7 @@ char     *ft_put_in_tab(int size, char *text)
 		return (0);
 	fd = open(text, O_RDONLY);
 	if (fd == -1)
-	{
-		write(2, "open error\n", 11);
-		return (0);
-	}
+		map_error();
 	ret = read(fd, buf, size);
 		buf[ret] = '\0';
 	i = 0;
